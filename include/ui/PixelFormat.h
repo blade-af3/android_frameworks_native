@@ -63,6 +63,9 @@ enum {
     PIXEL_FORMAT_BGRA_8888   = HAL_PIXEL_FORMAT_BGRA_8888,  // 4x8-bit BGRA
     PIXEL_FORMAT_RGBA_5551   = 6,                           // 16-bit ARGB
     PIXEL_FORMAT_RGBA_4444   = 7,                           // 16-bit ARGB
+#ifdef SPRD_HARDWARE
+    PIXEL_FORMAT_YCbCr_420_SP= 25,
+#endif
 };
 
 typedef int32_t PixelFormat;

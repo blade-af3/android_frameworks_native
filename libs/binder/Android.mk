@@ -45,6 +45,11 @@ sources += \
     MemoryHeapIon.cpp
 endif
 
+ifeq ($(BOARD_NEEDS_MEMORYHEAPION_SPRD),true)
+sources += \
+    MemoryHeapIon.SPRD.cpp
+endif
+
 LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -58,6 +63,10 @@ else
 PLATFORM_DIR := $(TARGET_BOARD_PLATFORM)
 endif
 LOCAL_C_INCLUDES += hardware/samsung_slsi/$(PLATFORM_DIR)/include
+endif
+ifeq ($(BOARD_NEEDS_MEMORYHEAPION_SPRD),true)
+LOCAL_C_INCLUDES += \
+    $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 endif
 
 LOCAL_LDLIBS += -lpthread
@@ -78,6 +87,10 @@ else
 PLATFORM_DIR := $(TARGET_BOARD_PLATFORM)
 endif
 LOCAL_C_INCLUDES += hardware/samsung_slsi/$(PLATFORM_DIR)/include
+endif
+ifeq ($(BOARD_NEEDS_MEMORYHEAPION_SPRD),true)
+LOCAL_C_INCLUDES += \
+    $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 endif
 
 LOCAL_LDLIBS += -lpthread
